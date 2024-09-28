@@ -2,7 +2,6 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%@ include file="Header.jsp"%>
-
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -62,23 +61,26 @@ input {
 	}
 	%>
 
-
 	<div class="container">
-		<h1>Add New User</h1>
-
+		<h1>Edit User</h1>
 		<form action="<%=request.getContextPath()%>/userManagement">
-			<input type="hidden" name="action" value="AddNewUser"> <label
-				for="username">User Name:</label> <input type="text" id="username"
-				name="username" required> <label for="email">Email:</label>
-			<input type="email" id="email" name="email" required> <label
-				for="country">Country:</label> <input type="text" id="country"
-				name="country" required>
+			<input type="hidden" name="action" value="SaveUser"> 
+			<input type="hidden" name="id" value="${user.id}"> 
+			<label
+				for="username">User Name:</label> 
+				<input type="text" id="username"  name="username" value="${user.name}" required/> 
+				
+				
+				<label for="email">Email:</label>
+				<input type="email" id="email" name="email" value="${user.email}" required/> 
+				
+				<label for="country">Country:</label> 
+				<input type="text" id="country" name="country"  value="${user.country}" required/>
 
 			<div class="actions">
-				<button type="submit">Add User</button>
+				<button type="submit">Save User</button>
 			</div>
 		</form>
 	</div>
-
 </body>
 </html>

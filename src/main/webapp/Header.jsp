@@ -4,7 +4,6 @@
 <nav>
 	<a href="AddNewUser.jsp">Add New User</a> 
 	&nbsp; &nbsp; | &nbsp;&nbsp; 
-	<form action="ViewUsers" style="display:inline;">
-        <button type="submit">View Users</button>
-    </form>
+	<a href="<%=request.getContextPath()%>/userManagement?action=ViewUsers">View Users</a> 
+
 </nav>

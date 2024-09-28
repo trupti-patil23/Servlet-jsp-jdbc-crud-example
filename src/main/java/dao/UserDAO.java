@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
@@ -16,8 +15,6 @@ public class UserDAO {
 	private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
 	private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
 	private static final String ADD_USERS_SQL = "insert into users (name, email, country) values (?,?,?)";
-	
-	
 
 	/**
 	 * This method will print exception in detail.
@@ -40,24 +37,25 @@ public class UserDAO {
 		}
 	}
 
-	public boolean addUser(User user) { 
-		System.out.println("addUser() method called");
+	/**
+	 * This methods adds new user details to the database table "users"
+	 * 
+	 * @param user
+	 * @return
+	 */
+	public boolean addUser(User user) {
 		Connection connection = null;
 		boolean insertSuccess = false;
 		try {
 			connection = DatabaseConnection.getConnection();
 			PreparedStatement preparedStmt = connection.prepareStatement(ADD_USERS_SQL);
-			
+
 			preparedStmt.setString(1, user.getName());
 			preparedStmt.setString(2, user.getEmail());
 			preparedStmt.setString(3, user.getCountry());
-		
-			insertSuccess = preparedStmt.executeUpdate() >0;
-			System.out.println("insertSuccess   "+insertSuccess);
 
-			if (insertSuccess) {
-				System.out.println("Inserted User data Successfully!");
-			}
+			insertSuccess = preparedStmt.executeUpdate() > 0;
+
 		} catch (SQLException ex) {
 			// Catch SQLException and pass it to printSQLException
 			printSQLException(ex);
@@ -80,7 +78,7 @@ public class UserDAO {
 	 * @param id
 	 * @return
 	 */
-	public User selectUserById(int id) {
+	public User getUserById(int id) {
 		User user = null;
 		Connection connection = null;
 		try {
@@ -92,10 +90,8 @@ public class UserDAO {
 				String name = rs.getString("name");
 				String email = rs.getString("email");
 				String country = rs.getString("country");
-				user = new User(name, email, country);
+				user = new User(id, name, email, country);
 			}
-
-			System.out.println("User data by given id: " + user);
 		} catch (SQLException ex) {
 			// Catch SQLException and pass it to printSQLException
 			printSQLException(ex);
@@ -162,11 +158,7 @@ public class UserDAO {
 			connection = DatabaseConnection.getConnection();
 			PreparedStatement preparedStmt = connection.prepareStatement(DELETE_USERS_SQL);
 			preparedStmt.setInt(1, id);
-			deleteSuccess = preparedStmt.execute();
-
-			if (deleteSuccess) {
-				System.out.println("Deleted Successfully!");
-			}
+			deleteSuccess = preparedStmt.executeUpdate() > 0;
 		} catch (SQLException ex) {
 			// Catch SQLException and pass it to printSQLException
 			printSQLException(ex);
@@ -198,11 +190,7 @@ public class UserDAO {
 			preparedStmt.setString(2, user.getEmail());
 			preparedStmt.setString(3, user.getCountry());
 			preparedStmt.setInt(4, user.getId());
-			updateSuccess = preparedStmt.execute();
-
-			if (updateSuccess) {
-				System.out.println("Updated User data Successfully!");
-			}
+			updateSuccess = preparedStmt.executeUpdate() > 0;
 		} catch (SQLException ex) {
 			// Catch SQLException and pass it to printSQLException
 			printSQLException(ex);

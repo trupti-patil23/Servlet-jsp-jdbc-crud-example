@@ -3,31 +3,20 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	id="WebApp_ID" version="4.0">
-	
-	
+
+
 	<welcome-file-list>
 		<welcome-file>Header.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<servlet>
-		<servlet-name>AddUserServlet</servlet-name>
-		<servlet-class>web.AddNewUserServlet</servlet-class>
+		<servlet-name>UserManagementServlet</servlet-name>
+		<servlet-class>web.UserManagementServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>AddUserServlet</servlet-name>
-		<url-pattern>/AddNewUser</url-pattern>
-	</servlet-mapping>	
-	
-	
-	<servlet>
-		<servlet-name>ViewUserListServlet</servlet-name>
-		<servlet-class>web.ViewUsersServlet</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>ViewUserListServlet</servlet-name>
-		<url-pattern>/ViewUsers</url-pattern>
-	</servlet-mapping>	
+		<servlet-name>UserManagementServlet</servlet-name>
+		<url-pattern>/userManagement</url-pattern>
+	</servlet-mapping>
 
 </web-app>
