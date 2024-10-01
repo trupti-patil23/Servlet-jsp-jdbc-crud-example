@@ -35,8 +35,6 @@ public class DatabaseConnection {
         } catch (ClassNotFoundException e) {			
 			e.printStackTrace();
 		}
-		
-		System.out.println("Connected to database successfully");
 		return connection;
 	}
 

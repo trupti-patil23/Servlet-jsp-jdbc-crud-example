@@ -6,3 +6,10 @@ create table users (
  country varchar(120),
  PRIMARY KEY (id)
 );
+
+create table login(
+username varchar(10) NOT NULL,
+password varchar(10) NOT NULL
+);
+
+INSERT INTO login (username, password) VALUES ('admin', 'admin');

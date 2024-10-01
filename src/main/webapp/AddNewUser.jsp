@@ -66,7 +66,7 @@ input {
 	<div class="container">
 		<h1>Add New User</h1>
 
-		<form action="<%=request.getContextPath()%>/userManagement">
+		<form action="<%=request.getContextPath()%>/userManagement" method="post">
 			<input type="hidden" name="action" value="AddNewUser"> <label
 				for="username">User Name:</label> <input type="text" id="username"
 				name="username" required> <label for="email">Email:</label>

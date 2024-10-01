@@ -63,7 +63,7 @@ input {
 
 	<div class="container">
 		<h1>Edit User</h1>
-		<form action="<%=request.getContextPath()%>/userManagement">
+		<form action="<%=request.getContextPath()%>/userManagement" method="post">
 			<input type="hidden" name="action" value="SaveUser"> 
 			<input type="hidden" name="id" value="${user.id}"> 
 			<label

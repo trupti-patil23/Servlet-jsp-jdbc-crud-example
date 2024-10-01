@@ -129,7 +129,6 @@ public class UserDAO {
 				String country = rs.getString("country");
 				user = new User(id, name, email, country);
 				usersList.add(user);
-				System.out.println(user);
 			}
 		} catch (SQLException ex) {
 			// Catch SQLException and pass it to printSQLException
